@@ -8,6 +8,7 @@
     "sourceMap": true,
     "declaration": false,
     "jsx": "react",
+    "resolveJsonModule": true,
     "module": "ESNext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
