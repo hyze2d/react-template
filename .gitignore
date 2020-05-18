@@ -1,0 +1,13 @@
+node_modules
+package-lock.json
+dist
+cache/awcache
+coverage
+/report
+stats.json
+.DS_Store
+coverage
+yarn.lock
+/config/local.json
+yarn-error.log
+yarn.lock

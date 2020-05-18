@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "declaration": false,
+    "jsx": "react",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "ES2015",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "paths": {
+      "@env": ["./src/enviroment.ts"],
+      "@store": ["./src/store/index"],
+      "@store/*": ["./src/store/*"],
+      "@core": ["./src/core/index"],
+      "@core/*": ["./src/core/*"],
+      "@api": ["./src/api/index"],
+      "@app": ["./src/modules/app/index"],
+      "@app/*": ["./src/modules/app/*"],
+      "@auth": ["./src/modules/auth/index"],
+      "@auth/*": ["./src/modules/auth/*"],
+      "@main-page": ["./src/modules/main-page/index"],
+      "@main-page/*": ["./src/modules/main-page/*"],
+      "@profile": ["./src/modules/profile/index"],
+      "@profile/*": ["./src/modules/profile/*"]
+    }
+  },
+  "include": ["./src/**/*", "./typings/**/*"],
+  "exclude": ["node_modules", "@types"]
+}
