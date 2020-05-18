@@ -1,31 +1,8 @@
+import { Button, hoc } from '@core';
 import * as React from 'react';
-import { AuthProps } from './auth.props';
-import * as styles from './auth.scss';
-import { Button, hoc, useTranslationSource } from '@core';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { State } from '@store';
-import { login } from './store';
-
-/**
- * Use auth
- */
-const useAuth = ({}: AuthProps) => {
-  const dispatch = useDispatch();
-  const { t, i18n } = useTranslationSource('auth', require('./auth.lang.json'));
-  const { pathname } = useSelector((state: State) => state.router.location);
-
-  useEffect(() => {
-    dispatch(login());
-  }, []);
-
-  return {
-    t,
-    pathname,
-    example: 'example prop provided by "hoc"'
-  };
-};
+import { useAuth } from './auth.props';
+import * as styles from './auth.scss';
 
 /**
  * <Auth />
