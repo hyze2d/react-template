@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history';
 import { createStore } from './store';
 import { Provider } from './provider';
 import { App } from '@app';
+import './localization';
 
 const history = createBrowserHistory();
 const store = createStore(history);
