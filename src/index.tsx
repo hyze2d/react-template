@@ -5,11 +5,13 @@ import { createBrowserHistory } from 'history';
 import { createStore } from './store';
 import { Provider } from './provider';
 import { App } from '@app';
-import './localization';
+import { init } from './localization';
 
 const history = createBrowserHistory();
 const store = createStore(history);
-const setup = () => {
+const setup = async () => {
+  await init();
+
   render(
     <Provider store={store} history={history}>
       <App />

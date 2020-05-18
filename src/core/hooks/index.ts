@@ -6,3 +6,4 @@ export * from './use-media-points';
 export * from './use-click-outside';
 export * from './use-query';
 export * from './use-countdown';
+export * from './use-dynamic-translation';
