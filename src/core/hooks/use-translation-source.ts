@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import * as immutable from 'object-path-immutable';
-import i18next from 'i18next';
 
 /**
  * Load translation
