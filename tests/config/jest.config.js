@@ -14,7 +14,7 @@ module.exports = {
       }
     }
   },
-  snapshotResolver: '<rootDir>/tests/config/snapshot-resolver.js',
+  // snapshotResolver: '<rootDir>/tests/config/snapshot-resolver.js',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: [
     '<rootDir>/webpack/',
