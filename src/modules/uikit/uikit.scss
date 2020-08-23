@@ -22,3 +22,15 @@
     margin-left: 24px;
   }
 }
+
+.cards {
+  @include flex($align: center);
+  .card {
+    @include flex(center, center);
+    font-size: 16px;
+
+    &:not(:first-child) {
+      margin-left: 16px;
+    }
+  }
+}

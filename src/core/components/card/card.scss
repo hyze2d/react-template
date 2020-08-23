@@ -1,0 +1,19 @@
+@import 'core.scss';
+
+.card {
+  @include size(400px);
+  z-index: 3;
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px 0 rgba(181, 177, 174, 0.2);
+  cursor: pointer;
+  &:hover {
+    &:not(.card--disabled) {
+      box-shadow: 1px 1px 20px 0 rgba(187, 151, 135, 0.1);
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+}
