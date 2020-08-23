@@ -1,3 +1,53 @@
+@import 'core.scss';
+
 .button {
-	
+  @include flex(center, center);
+  width: fit-content;
+  border: 0;
+  border-radius: 4px;
+  transition: 0.25s;
+  cursor: pointer;
+  outline: none;
+
+  &--primary {
+    color: #ffffff;
+    background: #99c642;
+    border: 1px solid #99c642;
+    &:hover {
+      &:enabled {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &--secondary {
+    color: #99c642;
+    background: transparent;
+    border: 1px solid #99c642;
+    &:hover {
+      &:enabled {
+        color: #ffffff;
+        background: #99c642;
+      }
+    }
+  }
+
+  &--sm {
+    padding: 12px;
+    font-size: 12px;
+  }
+
+  &--md {
+    padding: 16px;
+    font-size: 16px;
+  }
+  &--lg {
+    padding: 16px 24px;
+    font-size: 24px;
+  }
+  &--disabled {
+    background: gray;
+    border: 1px solid gray;
+    cursor: not-allowed;
+  }
 }

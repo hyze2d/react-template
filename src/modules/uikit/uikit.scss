@@ -1,0 +1,36 @@
+@import 'core.scss';
+
+.uikit {
+  padding: 15px;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.section {
+  margin: 100px 0;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.buttons {
+  @include flex($align: center);
+  button:not(:first-child) {
+    margin-left: 24px;
+  }
+}
+
+.cards {
+  @include flex($align: center);
+  .card {
+    @include flex(center, center);
+    font-size: 16px;
+
+    &:not(:first-child) {
+      margin-left: 16px;
+    }
+  }
+}
