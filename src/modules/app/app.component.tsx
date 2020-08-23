@@ -3,6 +3,7 @@ import { AppProps } from './app.props';
 import * as styles from './app.scss';
 import { register } from '@core';
 import { Switch, Route } from 'react-router-dom';
+import { Uikit } from '../uikit';
 
 const Auth = register('auth', () => import('@auth'));
 const Profile = register('profile', () => import('@profile'));
@@ -16,6 +17,7 @@ const App: React.FC<AppProps> = ({}) => (
       <Switch>
         <Route path='/auth' component={Auth} />
         <Route path='/profile' component={Profile} />
+        <Route path='/uikit' component={Uikit} />
       </Switch>
     </React.Suspense>
   </div>
