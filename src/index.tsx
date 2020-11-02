@@ -1,23 +1,14 @@
-import './styles/global.scss';
-import * as React from 'react';
+import React from 'react';
+import { Provider } from 'react-redux';
 import { render } from 'react-dom';
-import { createBrowserHistory } from 'history';
-import { createStore } from './store';
-import { Provider } from './provider';
-import { App } from '@app';
-import { init } from './localization';
+import { Router } from 'react-router-dom';
+import { App } from './app.component';
 
-const history = createBrowserHistory();
-const store = createStore(history);
-const setup = async () => {
-  await init();
-
-  render(
-    <Provider store={store} history={history}>
+render(
+  <Provider store={store}>
+    <Router history={history}>
       <App />
-    </Provider>,
-    document.getElementById('app')
-  );
-};
-
-setup();
+    </Router>
+  </Provider>,
+  document.getElementById('app')
+);

@@ -1,26 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useTranslationSource } from '@core';
-import { State } from '@store';
-import { useEffect } from 'react';
-import { login } from './store';
+type AuthProps = {};
 
 /**
- * Use auth
+ * <Auth /> props
  */
-const useAuth = ({}) => {
-  const dispatch = useDispatch();
-  const { t } = useTranslationSource('auth', require('./auth.lang.json'));
-  const { pathname } = useSelector((state: State) => state.router.location);
+const useAuthProps = (_: AuthProps) => {};
 
-  useEffect(() => {
-    dispatch(login());
-  }, []);
-
-  return {
-    t,
-    pathname,
-    example: 'example prop provided by "hoc"'
-  };
-};
-
-export { useAuth };
+export { AuthProps, useAuthProps };
