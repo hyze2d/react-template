@@ -1,7 +1,13 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
 
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'prettier',
+    'unused-imports',
+    'sort-imports-es6-autofix'
+  ],
 
   extends: ['prettier/@typescript-eslint'],
 
@@ -20,6 +26,29 @@ module.exports = {
   },
 
   rules: {
+    '@typescript-eslint/member-ordering': [
+      'warn',
+      {
+        default: [
+          'private-static-field',
+          'protected-static-field',
+          'public-static-field',
+          'private-static-method',
+          'protected-static-method',
+          'public-static-method',
+          'private-constructor',
+          'protected-constructor',
+          'public-constructor',
+          'private-instance-field',
+          'protected-instance-field',
+          'public-instance-field',
+          'private-instance-method',
+          'protected-instance-method',
+          'public-instance-method'
+        ]
+      }
+    ],
+
     'prettier/prettier': ['warn', { usePrettierrc: true }],
 
     // react start
@@ -45,29 +74,16 @@ module.exports = {
     'jsx-quotes': ['warn', 'prefer-single'],
     'no-return-await': 'error',
     'valid-typeof': 'warn',
-    'use-isnan': ['error', { enforceForSwitchCase: true }],
-
-    '@typescript-eslint/member-ordering': [
-      'warn',
+    'sort-imports-es6-autofix/sort-imports-es6': [
+      2,
       {
-        default: [
-          'private-static-field',
-          'protected-static-field',
-          'public-static-field',
-          'private-static-method',
-          'protected-static-method',
-          'public-static-method',
-          'private-constructor',
-          'protected-constructor',
-          'public-constructor',
-          'private-instance-field',
-          'protected-instance-field',
-          'public-instance-field',
-          'private-instance-method',
-          'protected-instance-method',
-          'public-instance-method'
-        ]
+        ignoreCase: false,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
       }
-    ]
+    ],
+
+    'unused-imports/no-unused-imports': 'error',
+    'use-isnan': ['error', { enforceForSwitchCase: true }]
   }
 };
