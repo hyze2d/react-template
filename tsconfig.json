@@ -1,20 +1,22 @@
 {
   "compileOnSave": false,
+  "exclude": ["node_modules", "@types"],
+  "include": ["./src/**/*", "./typings/**/*"],
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "outDir": "./dist",
+    "jsx": "react",
     "baseUrl": "./",
+    "target": "ES2015",
+    "module": "ESNext",
+    "outDir": "./dist",
     "sourceMap": true,
     "declaration": false,
-    "jsx": "react",
-    "module": "ESNext",
+    "skipLibCheck": true,
+    "lib": ["es2017", "dom"],
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "ES2015",
+    "allowSyntheticDefaultImports": true,
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
     "paths": {
       "@auth": ["./src/modules/auth/index"],
       "@auth/*": ["./src/modules/auth/*"],
@@ -23,7 +25,5 @@
       "@dashboard": ["./src/modules/dashboard/index"],
       "@dashboard/*": ["./src/modules/dashboard/*"]
     }
-  },
-  "include": ["./src/**/*", "./typings/**/*"],
-  "exclude": ["node_modules", "@types"]
+  }
 }
