@@ -1,14 +1,10 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import * as React from 'react';
 import { render } from 'react-dom';
-import { Router } from 'react-router-dom';
 import { App } from './app.component';
+import { createBrowserHistory } from 'history';
 
-render(
-  <Provider store={store}>
-    <Router history={history}>
-      <App />
-    </Router>
-  </Provider>,
-  document.getElementById('app')
-);
+const setup = async () => {
+  render(<App />, document.getElementById('app'));
+};
+
+setup();

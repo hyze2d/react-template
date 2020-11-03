@@ -1,5 +1,5 @@
+const path = require('path');
 const merge = require('deepmerge');
-
 // plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -35,8 +35,8 @@ const use = (loader, options = {}) => ({
  */
 const getStyleRule = (modules) => ({
   test: /(\.css|\.scss)/,
-  exclude: [/node_modules/, modules && /(global\..*)$/],
-  include: !modules && [/(global\..*)$/],
+  include: modules ? undefined : [/(global\..*)$/],
+  exclude: [/node_modules/, modules && /(global\..*)$/].filter((ok) => ok),
   use: [
     use(MiniCssExtractPlugin.loader, {
       minimize: production,
@@ -44,15 +44,17 @@ const getStyleRule = (modules) => ({
     }),
     use(
       'css-loader',
-      modules && {
-        localsConvention: 'camelCaseOnly',
-        modules: {
-          localIdentName: '[local]__[hash:base64:5]'
-        }
-      }
+      modules
+        ? {
+            localsConvention: 'camelCaseOnly',
+            modules: {
+              localIdentName: '[local]__[hash:base64:5]'
+            }
+          }
+        : {}
     ),
-    'postcss-loader',
-    'sass-loader'
+    use('postcss-loader'),
+    use('sass-loader')
   ]
 });
 
@@ -66,9 +68,9 @@ const entry = ['src/index.tsx'];
  */
 const output = {
   publicPath: '/',
-  path: '../dist',
   filename: 'js/[name].js',
   chunkFilename: 'js/[name].chunk.js',
+  path: path.resolve(__dirname, '../dist'),
   devtoolModuleFilenameTemplate: '[absolute-resource-path]',
   devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
 };
@@ -77,9 +79,9 @@ const output = {
  * Options for imports resolving
  */
 const resolve = {
-  extensions: ['.*'],
   modules: ['node_modules'],
   plugins: [new TsconfigPathsPlugin()],
+  extensions: ['.wasm', '.ts', '.tsx', '.mjs', '.cjs', '.js', '.json'],
   alias: {
     img: '../src/public/img',
     'core.scss': '../src/styles/core.scss'
@@ -91,8 +93,8 @@ const resolve = {
  */
 const rules = [
   {
-    use: 'ts-loader',
     test: /\.(ts|tsx)$/,
+    use: use('ts-loader'),
     exclude: /node_modules/
   },
   {
@@ -120,9 +122,9 @@ const plugins = [
    * Output html
    */
   new HtmlWebpackPlugin({
-    template: root('src/public/index.html'),
+    inject: true,
     filename: 'index.html',
-    inject: true
+    template: './src/public/index.html'
   }),
 
   /**
@@ -149,7 +151,7 @@ const plugins = [
     process: {
       env: {
         ...enviroments,
-        NODE_ENV: process.env.NODE_ENV
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production')
       }
     }
   }),
@@ -181,9 +183,9 @@ const config = {
   entry,
   output,
   resolve,
+  plugins,
   module: {
-    rules,
-    plugins
+    rules
   }
 };
 

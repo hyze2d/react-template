@@ -1,5 +1,4 @@
-const merge = require('webpack-merge');
-
+const { merge } = require('webpack-merge');
 const { config } = require('./webpack.base');
 
 // plugins
@@ -14,12 +13,30 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
  */
 module.exports = merge(config, {
   mode: 'production',
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'all',
+          name: 'vendor',
+          test: /[\\/]node_modules[\\/]/
+        }
+      }
+    },
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
   plugins: [
     /**
      * Clear output
      */
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [root('dist')]
+      cleanOnceBeforeBuildPatterns: ['./dist']
     }),
 
     /**
@@ -27,12 +44,13 @@ module.exports = merge(config, {
      */
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      statsFilename: '../report/stats.html'
-    }),
+      reportFilename: '../report/report.html'
+    })
 
     /**
      * Reduce lodash size
+     * NOTE: currently that plugin doesn't support webpack 5
      */
-    new LodashModuleReplacementPlugin()
+    // new LodashModuleReplacementPlugin()
   ]
 });

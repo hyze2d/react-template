@@ -1,4 +1,5 @@
 const config = require('./webpack.dev');
+const { merge } = require('webpack-merge');
 
 const {
   enviroments: { host, port = 8288 }
@@ -9,7 +10,6 @@ const {
  */
 module.exports = merge(config, {
   watch: true,
-  entry: [`webpack-dev-server/client?http://localhost:${port}`],
   devServer: {
     host,
     port,

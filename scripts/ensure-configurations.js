@@ -7,5 +7,5 @@ const missing = ['dev.json', 'local.json'].filter((item) =>
 );
 
 for (let path of missing) {
-  fs.writeFileSync(path, '{}');
+  fs.writeFileSync('./config/' + path, '{}');
 }

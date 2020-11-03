@@ -8,6 +8,7 @@ const App: FC = () => (
     {/* content */}
     {/* content */}
     {/* content */}
+    <div>App</div>
   </div>
 );
 
