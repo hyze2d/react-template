@@ -1,16 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-
   plugins: ['react', '@typescript-eslint', 'prettier'],
-
   extends: ['prettier/@typescript-eslint'],
-
-  settings: {
-    react: {
-      version: 'detect'
-    }
-  },
-
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -18,11 +9,9 @@ module.exports = {
       jsx: true
     }
   },
-
   rules: {
-    'prettier/prettier': ['warn', { usePrettierrc: true }],
-
-    // react start
+    'comma-dangle': ['error', 'never'],
+    'use-isnan': ['error', { enforceForSwitchCase: true }],
     'react/void-dom-elements-no-children': 'warn',
     'react/no-unsafe': 'warn',
     'react/no-unused-state': 'warn',
@@ -37,16 +26,10 @@ module.exports = {
     'react/jsx-key': 'warn',
     'react/jsx-max-props-per-line': ['warn', { maximum: 7 }],
     'react/jsx-max-depth': ['warn', { max: 8 }],
-    // react end
-
     'arrow-body-style': ['warn', 'as-needed'],
-    'comma-dangle': ['error', 'never'],
     'dot-notation': 'warn',
     'jsx-quotes': ['warn', 'prefer-single'],
-    'no-return-await': 'error',
     'valid-typeof': 'warn',
-    'use-isnan': ['error', { enforceForSwitchCase: true }],
-
     '@typescript-eslint/member-ordering': [
       'warn',
       {
@@ -68,6 +51,17 @@ module.exports = {
           'public-instance-method'
         ]
       }
+    ],
+    'prettier/prettier': [
+      'warn',
+      {
+        usePrettierrc: true
+      }
     ]
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 };
