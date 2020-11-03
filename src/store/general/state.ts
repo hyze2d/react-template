@@ -1,0 +1,3 @@
+class GeneralState {}
+
+export { GeneralState };
