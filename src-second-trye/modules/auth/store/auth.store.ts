@@ -1,0 +1,3 @@
+class AuthStore {}
+
+export { AuthStore };

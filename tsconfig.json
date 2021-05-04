@@ -17,13 +17,6 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["node_modules/@types"],
-    "paths": {
-      "@auth": ["./src/modules/auth/index"],
-      "@auth/*": ["./src/modules/auth/*"],
-      "@dashboard/user": ["./src/modules/dashboard/modules/user/index"],
-      "@dashboard/user/*": ["./src/modules/dashboard/modules/user/*"],
-      "@dashboard": ["./src/modules/dashboard/index"],
-      "@dashboard/*": ["./src/modules/dashboard/*"]
-    }
+    "paths": {}
   }
 }

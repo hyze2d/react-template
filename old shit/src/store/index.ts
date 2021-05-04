@@ -1,16 +1,16 @@
-import { enviroment } from '@env';
 import { History } from 'history';
+import { app } from './reducer';
 import {
   applyMiddleware,
-  createStore as reduxCreateStore,
-  combineReducers
+  combineReducers,
+  createStore as reduxCreateStore
 } from 'redux';
-import { run } from 'redux-chill';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware from 'redux-saga';
+import { enviroment } from '@env';
 import { getContext } from './context';
-import { app } from './reducer';
+import { run } from 'redux-chill';
 import { sagas } from './sagas';
+import createSagaMiddleware from 'redux-saga';
 
 /**
  * Custom store methods
@@ -26,8 +26,7 @@ declare module 'redux' {
  */
 const createStore = (history: History) => {
   const sagaMiddleware = createSagaMiddleware({
-    onError: error =>
-      enviroment.development && console.log(error, 'Saga error occured')
+    onError: error => {}
   });
   const applied = applyMiddleware(sagaMiddleware);
   const reducer = combineReducers(app);

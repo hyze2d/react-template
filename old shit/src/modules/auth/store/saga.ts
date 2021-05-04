@@ -6,17 +6,13 @@ class AuthSaga {
    * Login
    */
   @Saga(login)
-  public *login() {
-    console.log('LOGIN SAGA HANDLER');
-  }
+  public *login() {}
 
   /**
    * Test init
    */
   @Saga()
-  public *init() {
-    console.log('Instant run auth saga');
-  }
+  public *init() {}
 }
 
 const sagas = [new AuthSaga()];

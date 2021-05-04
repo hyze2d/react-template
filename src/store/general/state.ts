@@ -1,3 +1,0 @@
-class GeneralState {}
-
-export { GeneralState };

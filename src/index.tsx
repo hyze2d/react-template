@@ -1,9 +1,16 @@
-import * as React from 'react';
-import { App } from './app.component';
-import { render } from 'react-dom';
+import 'reflect-metadata';
+import { AppContainer } from './container';
+import { AuthState } from './auth/auth.state';
+import { AuthStore } from './auth/auth.store';
+import { GeneralState } from './general/general.state';
+import { GeneralStore } from './general/general.store';
 
-const setup = async () => {
-  render(<App />, document.getElementById('app'));
-};
+const app = new AppContainer();
 
-setup();
+const auth = app.container.get(AuthStore);
+const generalState = app.container.get(GeneralState);
+const general = app.container.get(GeneralStore);
+
+auth.login();
+
+console.log(generalState.user);

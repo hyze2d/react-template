@@ -9,8 +9,6 @@ const {
  * Dev server config
  */
 module.exports = merge(config, {
-  watch: true,
-
   devServer: {
     host,
     port,

@@ -149,10 +149,7 @@ const plugins = [
    */
   new DefinePlugin({
     process: {
-      env: {
-        ...enviroments,
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production')
-      }
+      env: enviroments
     }
   }),
 
