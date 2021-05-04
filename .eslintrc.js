@@ -83,7 +83,6 @@ module.exports = {
       }
     ],
 
-    'unused-imports/no-unused-imports': 'error',
     'use-isnan': ['error', { enforceForSwitchCase: true }]
   }
 };
