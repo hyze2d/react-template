@@ -6,10 +6,10 @@ import { injectable } from 'inversify';
 @injectable()
 class GeneralStore {
   public constructor(private state: GeneralState, private events: Events) {
-    this.events.on(Login, this.onLogin);
+    this.events.on(Login, this.authorize);
   }
 
-  public onLogin = ({ user }: Login) => {
+  public authorize = ({ user }: Login) => {
     this.state.user = user;
 
     console.log(this.state, 'st');
