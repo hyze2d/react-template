@@ -3,5 +3,5 @@ const { config } = require('./webpack.base');
 
 module.exports = merge(config, {
   mode: 'development',
-  devtool: 'eval-source-map'
+  devtool: 'source-map'
 });

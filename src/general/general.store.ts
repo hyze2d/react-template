@@ -11,6 +11,8 @@ class GeneralStore {
 
   public onLogin = ({ user }: Login) => {
     this.state.user = user;
+
+    console.log(this.state, 'st');
   };
 }
 

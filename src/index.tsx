@@ -11,6 +11,6 @@ const auth = app.container.get(AuthStore);
 const generalState = app.container.get(GeneralState);
 const general = app.container.get(GeneralStore);
 
-auth.login();
+auth.login('kek', '123');
 
-console.log(generalState.user);
+// auth.login('kek2', '1234');
