@@ -1,23 +1,25 @@
-import { AuthContainer } from './auth';
+import { AuthContainer } from '@auth';
 import { Container } from 'inversify';
-import { DIKey } from './di-key';
-import { Events } from './events';
-import { GeneralContainer } from './general';
+import { DIKey } from './config/di-key';
+import { Events } from './packages/store/events';
+import { GeneralContainer } from './store';
+import { config } from './config/config';
 import { makeAutoObservable } from 'mobx';
 
 class AppContainer {
-  public static register = [GeneralContainer, AuthContainer];
-
-  public constructor() {
+  /**
+   * Boostrap app
+   */
+  public constructor(containers: any[]) {
     const { container } = this;
 
     container.bind(Events).toSelf().inSingletonScope();
 
-    AppContainer.register.forEach(Registrator => {
+    containers.forEach(Registrator => {
       new Registrator().register(container);
     });
 
-    container.getAll<any>(DIKey.MakeAuthObservable).map(item => {
+    container.getAll<any>(DIKey.MakeAutoObservable).map(item => {
       makeAutoObservable(item);
     });
   }

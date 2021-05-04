@@ -1,16 +1,15 @@
 import 'reflect-metadata';
 import { AppContainer } from './container';
-import { AuthState } from './auth/auth.state';
-import { AuthStore } from './auth/auth.store';
-import { GeneralState } from './general/general.state';
-import { GeneralStore } from './general/general.store';
+import { AuthContainer, AuthStore } from '@auth';
+import { GeneralContainer, GeneralState, GeneralStore } from './store';
+import { asPromise } from './packages/store';
+import { flowResult } from 'mobx';
 
-const app = new AppContainer();
+const app = new AppContainer([GeneralContainer, AuthContainer]);
 
 const auth = app.container.get(AuthStore);
 const generalState = app.container.get(GeneralState);
 const general = app.container.get(GeneralStore);
 
-auth.login('kek', '123');
-
-// auth.login('kek2', '1234');
+auth.login('dsad', 'dsada');
+auth.login('dsad', 'dsada'); // prev call will be canceled

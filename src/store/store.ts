@@ -1,6 +1,6 @@
-import { Events } from 'src/events';
-import { GeneralState } from './general.state';
-import { Login } from 'src/auth/auth.events';
+import { Events } from 'src/packages/store/events';
+import { GeneralState } from './state';
+import { Login } from '@auth';
 import { injectable } from 'inversify';
 
 @injectable()

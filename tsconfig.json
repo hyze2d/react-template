@@ -17,6 +17,9 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["node_modules/@types"],
-    "paths": {}
+    "paths": {
+      "@auth": ["./src/modules/auth/index"],
+      "@auth/*": ["./src/modules/auth/*"]
+    }
   }
 }

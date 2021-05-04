@@ -1,18 +1,19 @@
-import { AuthState } from './auth.state';
-import { AuthStore } from './auth.store';
+import { AuthState } from './state';
+import { AuthStore } from './store';
 import { Container } from 'inversify';
-import { DIKey } from 'src/di-key';
+import { DIKey } from 'src/config';
 
 class AuthContainer {
   public register(container: Container) {
     container.bind(AuthState).toSelf().inSingletonScope();
 
     container
-      .bind(DIKey.MakeAuthObservable)
+      .bind(DIKey.MakeAutoObservable)
       .toDynamicValue(context => container.get(AuthState));
 
     container.bind(AuthStore).toSelf().inSingletonScope();
   }
 }
 
-export { AuthContainer };
+export { AuthContainer, AuthState, AuthStore };
+export * from './events';
