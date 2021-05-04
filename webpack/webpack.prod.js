@@ -13,6 +13,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
  */
 module.exports = merge(config, {
   mode: 'production',
+
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -31,6 +32,7 @@ module.exports = merge(config, {
       new OptimizeCSSAssetsPlugin({})
     ]
   },
+
   plugins: [
     /**
      * Clear output

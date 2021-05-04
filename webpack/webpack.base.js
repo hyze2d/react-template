@@ -33,10 +33,10 @@ const use = (loader, options = {}) => ({
 /**
  * Style rule with modules or w/o
  */
-const getStyleRule = (modules) => ({
+const getStyleRule = modules => ({
   test: /(\.css|\.scss)/,
   include: modules ? undefined : [/(global\..*)$/],
-  exclude: [/node_modules/, modules && /(global\..*)$/].filter((ok) => ok),
+  exclude: [/node_modules/, modules && /(global\..*)$/].filter(ok => ok),
   use: [
     use(MiniCssExtractPlugin.loader, {
       minimize: production,

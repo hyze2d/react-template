@@ -10,6 +10,7 @@ const {
  */
 module.exports = merge(config, {
   watch: true,
+
   devServer: {
     host,
     port,
