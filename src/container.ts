@@ -1,17 +1,21 @@
-import { AuthContainer } from '@auth';
 import { Container } from 'inversify';
 import { DIKey } from './config/di-key';
 import { Events } from './packages/store/events';
-import { GeneralContainer } from './store';
-import { config } from './config/config';
+import { RouterService } from './services';
+import { createBrowserHistory } from 'history';
 import { makeAutoObservable } from 'mobx';
 
 class AppContainer {
   /**
-   * Boostrap app
+   * Boostrap app container
    */
-  public constructor(containers: any[]) {
-    const { container } = this;
+  public static create(containers: any[]) {
+    const container = new Container();
+    const history = createBrowserHistory();
+
+    container.bind(DIKey.History).toConstantValue(history);
+
+    container.bind(RouterService).toSelf().inSingletonScope();
 
     container.bind(Events).toSelf().inSingletonScope();
 
@@ -22,9 +26,9 @@ class AppContainer {
     container.getAll<any>(DIKey.MakeAutoObservable).map(item => {
       makeAutoObservable(item);
     });
-  }
 
-  public container = new Container();
+    return container;
+  }
 }
 
 export { AppContainer };

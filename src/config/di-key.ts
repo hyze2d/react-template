@@ -1,5 +1,6 @@
 enum DIKey {
-  MakeAutoObservable = 'MakeAutoObservable'
+  MakeAutoObservable = 'MakeAutoObservable',
+  History = 'History'
 }
 
 export { DIKey };

@@ -1,15 +1,17 @@
 import 'reflect-metadata';
+import { App } from './app.component';
 import { AppContainer } from './container';
-import { AuthContainer, AuthStore } from '@auth';
-import { GeneralContainer, GeneralState, GeneralStore } from './store';
-import { asPromise } from './packages/store';
-import { flowResult } from 'mobx';
+import { AuthContainer } from '@auth/store';
+import { ContainerContext } from './hooks';
+import { GeneralContainer } from './store';
+import { render } from 'react-dom';
+import React from 'react';
 
-const app = new AppContainer([GeneralContainer, AuthContainer]);
+const container = AppContainer.create([GeneralContainer, AuthContainer]);
 
-const auth = app.container.get(AuthStore);
-const generalState = app.container.get(GeneralState);
-const general = app.container.get(GeneralStore);
-
-auth.login('dsad', 'dsada');
-auth.login('dsad', 'dsada'); // prev call will be canceled
+render(
+  <ContainerContext.Provider value={container}>
+    <App />
+  </ContainerContext.Provider>,
+  document.getElementById('app')
+);

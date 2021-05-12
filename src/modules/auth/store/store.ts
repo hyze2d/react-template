@@ -16,13 +16,15 @@ class AuthStore {
   public *login(email: string, password: string) {
     // login user bla bla
     // ...
-    yield sleep(3000);
+    yield sleep(500);
 
     const user = new User();
     user.id = 1;
     user.email = email;
     user.name = 'Bla bla';
     user.phone = '+92123131131';
+
+    console.log('log');
 
     this.events.dispatch(
       new Login({

@@ -2,6 +2,9 @@ import { injectable } from 'inversify';
 import { makeAutoObservable } from 'mobx';
 
 @injectable()
-class AuthState {}
+class AuthState {
+  public email: string;
+  public phone: string;
+}
 
 export { AuthState };

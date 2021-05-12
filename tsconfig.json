@@ -19,7 +19,11 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@auth": ["./src/modules/auth/index"],
-      "@auth/*": ["./src/modules/auth/*"]
+      "@auth/*": ["./src/modules/auth/*"],
+      "@home": ["./src/modules/home/index"],
+      "@home/*": ["./src/modules/home/*"],
+      "@profile": ["./src/modules/profile/index"],
+      "@profile/*": ["./src/modules/profile/*"]
     }
   }
 }
