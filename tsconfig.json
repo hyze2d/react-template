@@ -23,7 +23,9 @@
       "@home": ["./src/modules/home/index"],
       "@home/*": ["./src/modules/home/*"],
       "@profile": ["./src/modules/profile/index"],
-      "@profile/*": ["./src/modules/profile/*"]
+      "@profile/*": ["./src/modules/profile/*"],
+      "@dashboard": ["./src/modules/dashboard/index"],
+      "@dashboard/*": ["./src/modules/dashboard/*"]
     }
   }
 }

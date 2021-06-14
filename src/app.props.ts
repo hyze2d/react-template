@@ -17,27 +17,6 @@ const useAppProps = (_: AppProps) => {
 
   const {} = useSelector(container => container.get(GeneralState));
 
-  // return {
-  //   user
-  // }
-
-  // const { general, auth } = useContainer({
-  //   general: GeneralState,
-  //   auth: AuthState
-  // });
-
-  // return {
-  //   user: general.user
-  // };
-
-  // const {
-  //   general: { user },
-  //   auth
-  // } = useContainer(container => ({
-  //   general: container.get(GeneralState),
-  //   auth: container.get(AuthState)
-  // }));
-
   useEffect(() => {
     auth.login('dsad', 'dsada');
   }, []);
