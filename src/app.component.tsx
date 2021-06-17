@@ -1,18 +1,24 @@
-import { AppProps, useAppProps } from './app.props';
+import {} from 'mobx-react-lite';
+import { Store, container } from './container';
 import { hoc } from './packages/utils';
+import { makeAutoObservable } from 'mobx';
 import { observer } from 'mobx-react';
-import React, { FC } from 'react';
+import { useAppProps } from './app.props';
+import React, { useEffect } from 'react';
 
 /**
  * <App />
  */
-const App = hoc(useAppProps, ({ general }) => {
-  if (!general.user) {
-    return <div>Pls login</div>;
-  }
+const App = hoc(useAppProps, ({ value, onClick }) => {
+  console.log('kek');
 
-  // @ts-ignore
-  return <div>{general.user.email}</div>;
+  return (
+    <div>
+      <div>ROOT: {value}</div>
+
+      <button onClick={onClick}>GO KEK</button>
+    </div>
+  );
 });
 
 export { App };

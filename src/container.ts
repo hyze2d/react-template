@@ -1,34 +1,50 @@
-import { Container } from 'inversify';
-import { DIKey } from './config/di-key';
-import { Events } from './packages/store/events';
-import { RouterService } from './services';
-import { createBrowserHistory } from 'history';
-import { makeAutoObservable } from 'mobx';
+import { Container, injectable } from 'inversify';
+import { Reaction, autorun, flowResult, makeAutoObservable } from 'mobx';
+import { createContext, useContext, useMemo } from 'react';
 
-class AppContainer {
-  /**
-   * Boostrap app container
-   */
-  public static create(containers: any[]) {
-    const container = new Container();
-    const history = createBrowserHistory();
+const sleep = (duration: number) =>
+  new Promise(res => setTimeout(res, duration));
 
-    container.bind(DIKey.History).toConstantValue(history);
+@injectable()
+class AnotherDependency {
+  public bruh = 123;
+}
 
-    container.bind(RouterService).toSelf().inSingletonScope();
+@injectable()
+class Store {
+  public constructor(private another: AnotherDependency) {}
 
-    container.bind(Events).toSelf().inSingletonScope();
+  public somefield: boolean;
+  public value = 'initial';
 
-    containers.forEach(Registrator => {
-      new Registrator().register(container);
-    });
+  public goKek() {
+    this.value = 'KEK';
+  }
 
-    container.getAll<any>(DIKey.MakeAutoObservable).map(item => {
-      makeAutoObservable(item);
-    });
+  public *setKek(value: string) {
+    yield sleep(1500);
 
-    return container;
+    this.value = value;
+
+    return 'blabla';
   }
 }
 
-export { AppContainer };
+const container = new Container();
+
+container.bind(AnotherDependency).toSelf().inSingletonScope();
+container.bind(Store).toSelf().inSingletonScope();
+
+const store = container.get(Store);
+
+makeAutoObservable(store);
+
+const ContainerContext = createContext<Container>(null);
+
+const useStore = (deps: any[] = []) => {
+  const container = useContext(ContainerContext);
+
+  return useMemo(() => container.get(Store), deps);
+};
+
+export { container, Store, ContainerContext, useStore };

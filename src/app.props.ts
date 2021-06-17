@@ -1,7 +1,6 @@
-import { AuthState, AuthStore } from '@auth/store';
-import { GeneralState } from './store';
-import { useContainer, useSelector } from './hooks';
-import { useEffect } from 'react';
+import { Reaction, flowResult } from 'mobx';
+import { Store, container, useStore } from './container';
+import { useObserver } from 'mobx-react-lite';
 
 type AppProps = {};
 
@@ -9,19 +8,17 @@ type AppProps = {};
  * <App /> props
  */
 const useAppProps = (_: AppProps) => {
-  const [general, { email, phone }, auth] = useContainer(
-    GeneralState,
-    AuthState,
-    AuthStore
-  );
+  const store = useStore();
+  const { value } = store;
 
-  const {} = useSelector(container => container.get(GeneralState));
+  const onClick = async () => {
+    await flowResult(store.setKek('blabla'));
+  };
 
-  useEffect(() => {
-    auth.login('dsad', 'dsada');
-  }, []);
-
-  return { general };
+  return {
+    value,
+    onClick
+  };
 };
 
 export { AppProps, useAppProps };
