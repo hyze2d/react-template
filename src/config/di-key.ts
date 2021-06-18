@@ -1,3 +1,5 @@
-enum DIKey {}
+enum DIKey {
+  History = 'History'
+}
 
 export { DIKey };

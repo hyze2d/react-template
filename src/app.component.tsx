@@ -1,24 +1,32 @@
-import {} from 'mobx-react-lite';
-import { Store, container } from './container';
-import { hoc } from './packages/utils';
-import { makeAutoObservable } from 'mobx';
-import { observer } from 'mobx-react';
-import { useAppProps } from './app.props';
-import React, { useEffect } from 'react';
+import { NavLink, Route, Switch } from 'react-router-dom';
+import React, { FC } from 'react';
+
+const Auth = React.lazy(() =>
+  import('@auth').then(res => ({ default: res.Auth }))
+);
 
 /**
  * <App />
  */
-const App = hoc(useAppProps, ({ value, onClick }) => {
-  console.log('kek');
-
-  return (
+const App: FC = () => (
+  <div>
     <div>
-      <div>ROOT: {value}</div>
+      <NavLink to='/' activeStyle={{ color: 'green' }}>
+        Home
+      </NavLink>
 
-      <button onClick={onClick}>GO KEK</button>
+      <NavLink to='/auth' activeStyle={{ color: 'green' }}>
+        Auth
+      </NavLink>
     </div>
-  );
-});
+
+    <React.Suspense fallback={null}>
+      <Switch>
+        <Route component={Auth} path='/auth' />
+        <Route render={() => 'Home'} path='/' />
+      </Switch>
+    </React.Suspense>
+  </div>
+);
 
 export { App };

@@ -18,9 +18,12 @@
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@auth/*": ["./src/modules/auth/*"],
+      "@packages/*": ["./src/packages/*"],
+      "@hooks": ["./src/hooks/index"],
+      "@profile": ["./src/modules/profile/index"],
       "@profile/*": ["./src/modules/profile/*"],
-      "@dashboard/*": ["./src/modules/dashboard/*"]
+      "@auth": ["./src/modules/auth/index"],
+      "@auth/*": ["./src/modules/auth/*"]
     }
   }
 }
