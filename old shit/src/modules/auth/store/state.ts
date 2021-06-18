@@ -1,3 +1,0 @@
-class AuthState {}
-
-export { AuthState };
