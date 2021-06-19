@@ -1,26 +1,35 @@
 .h1 {
+  @include font(28px, 700, 36px);
 }
 
 .h2 {
+  @include font(24px, 700, 36px);
 }
 
 .h3 {
+  @include font(22px, 700, 32px);
 }
 
 .h4 {
+  @include font(18px, 700, 28px);
 }
 
 .h5 {
+  @include font(16px, 700, 24px);
 }
 
 .h6 {
+  @include font(14px, 700, 20px);
 }
 
 .body-1 {
+  @include font(16px, 400);
 }
 
 .body-2 {
+  @include font(16px, 400);
 }
 
 .body-3 {
+  @include media('<md', '<xl');
 }

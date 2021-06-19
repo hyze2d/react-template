@@ -9,10 +9,6 @@ const hoc = function <SP, HP>(
   hook: (props: Partial<SP>) => HP,
   Source: ComponentType<HP & SP>
 ) {
-  // const Result: any = (props: SP) => (
-  //   <Source {...useObserver(() => hook(props) || ({} as any))} {...props} />
-  // );
-
   const Result: any = observer((props: SP) => (
     <Source {...(hook(props) || ({} as any))} {...props} />
   ));
