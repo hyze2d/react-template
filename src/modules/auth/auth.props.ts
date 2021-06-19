@@ -1,5 +1,4 @@
 import { useAuthStore } from './hooks';
-import { useEffect } from 'react';
 
 const useAuthProps = () => {
   const {
@@ -7,8 +6,13 @@ const useAuthProps = () => {
     state: { email }
   } = useAuthStore();
 
+  const onClick = () => {
+    store.setEmail('KEKW@KEKW.KEKW');
+  };
+
   return {
-    email
+    email,
+    onClick
   };
 };
 
