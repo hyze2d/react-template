@@ -1,17 +1,11 @@
-@mixin from($start) {
-  @media (min-width: env(#{$start})) {
-    @content;
-  }
-}
+@import 'include-media/dist/_include-media.scss';
 
-@mixin before($end) {
-  @media (min-width: env(#{$end})) {
-    @content;
-  }
-}
-
-@mixin between($start, $end) {
-  @media (min-width: env(#{$start})) and (max-width: env(#{$end})) {
-    @content;
-  }
-}
+$breakpoints: (
+  xxs: $xxs,
+  xs: $xs,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+  xxl: $xxl
+);

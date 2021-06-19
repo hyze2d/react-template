@@ -20,7 +20,7 @@ const mapToProperties = (
 
 const ThemeProvider: FC<{ theme: Theme }> = ({ children, theme }) => {
   useEffect(() => {
-    const { color, space, breakpoint } = theme;
+    const { color, space } = theme;
 
     document.documentElement.style.setProperty(
       '--space',
@@ -28,17 +28,6 @@ const ThemeProvider: FC<{ theme: Theme }> = ({ children, theme }) => {
     );
 
     mapToProperties(color, 'color');
-
-    mapToProperties(
-      Object.entries(breakpoint).reduce(
-        (result, [key, value]) => ({
-          ...result,
-          [key]: value + 'px'
-        }),
-        {}
-      ),
-      'breakpoint'
-    );
   }, [theme]);
 
   return (

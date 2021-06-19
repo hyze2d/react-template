@@ -11,10 +11,10 @@ $success: var(--color-success);
 
 $space: var(--space);
 
-$xxs: var(--breakpoint-xxs);
-$xs: var(--breakpoint-xs);
-$sm: var(--breakpoint-sm);
-$md: var(--breakpoint-md);
-$lg: var(--breakpoint-lg);
-$xl: var(--breakpoint-xl);
-$xxl: var(--breakpoint-xxl);
+$xxs: 320px;
+$xs: 375px;
+$sm: 480px;
+$md: 769px;
+$lg: 1024px;
+$xl: 1200px;
+$xxl: 1366px;

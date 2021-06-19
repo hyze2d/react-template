@@ -17,6 +17,7 @@
     "deepmerge": "^4.2.2",
     "formik": "^2.2.9",
     "history": "^4.9.0",
+    "include-media": "^1.4.10",
     "inversify": "^5.1.1",
     "mobx": "^6.3.0",
     "mobx-react": "^7.1.0",

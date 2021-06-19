@@ -25,23 +25,7 @@ const theme: Theme = {
     success: '#FF8E53'
   },
 
-  space: 12,
-
-  breakpoint: {
-    xxs: 320,
-
-    xs: 375,
-
-    sm: 480,
-
-    md: 769,
-
-    lg: 1024,
-
-    xl: 1200,
-
-    xxl: 1366
-  }
+  space: 12
 };
 
 render(
