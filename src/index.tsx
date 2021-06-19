@@ -12,9 +12,9 @@ const container = build(history);
 
 render(
   <ContainerContext.Provider value={container}>
-    <BrowserRouter>
+    <Router history={history}>
       <App />
-    </BrowserRouter>
+    </Router>
   </ContainerContext.Provider>,
   document.getElementById('app')
 );
