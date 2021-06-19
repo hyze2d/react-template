@@ -1,0 +1,24 @@
+@import '../../../../styles/core/index.scss';
+
+.kek-cheburek {
+  background: red;
+  &__bruh {
+    color: red;
+  }
+
+  &--kekw {
+    color: green;
+  }
+}
+
+.login {
+  padding: $space;
+
+  @include from($xs) {
+    color: $primary;
+  }
+
+  @include from($lg) {
+    color: blue;
+  }
+}

@@ -1,8 +1,16 @@
-type AppProps = {};
+import { useGeneralStore } from '@hooks';
 
 /**
  * <App /> props
  */
-const useAppProps = (_: AppProps) => ({});
+const useAppProps = () => {
+  const {
+    state: { user }
+  } = useGeneralStore();
 
-export { AppProps, useAppProps };
+  return {
+    user
+  };
+};
+
+export { useAppProps };

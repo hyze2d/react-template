@@ -18,12 +18,17 @@
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["node_modules/@types"],
     "paths": {
+      "@models": ["./src/models/index"],
+      "@models/*": ["./src/models/*"],
+      "@store": ["./src/store/index"],
       "@packages/*": ["./src/packages/*"],
       "@hooks": ["./src/hooks/index"],
       "@profile": ["./src/modules/profile/index"],
       "@profile/*": ["./src/modules/profile/*"],
       "@auth": ["./src/modules/auth/index"],
-      "@auth/*": ["./src/modules/auth/*"]
+      "@auth/*": ["./src/modules/auth/*"],
+      "@dashboard": ["./src/modules/dashboard/index"],
+      "@dashboard/*": ["./src/modules/dashboard/*"]
     }
   }
 }

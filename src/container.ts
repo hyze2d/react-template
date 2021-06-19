@@ -1,7 +1,6 @@
 import { Container } from 'inversify';
 import { DIKey } from './config';
 import { History } from 'history';
-import { createContext } from 'react';
 
 const build = (history: History) => {
   const container = new Container();

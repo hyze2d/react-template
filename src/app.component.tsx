@@ -1,32 +1,55 @@
+import { GeneralInstaller } from './store';
 import { NavLink, Route, Switch } from 'react-router-dom';
-import React, { FC } from 'react';
+import { hoc } from '@packages/utils';
+import { useAppProps } from './app.props';
+import { withInstaller } from '@packages/store';
+import React, { FC, Suspense } from 'react';
 
 const Auth = React.lazy(() =>
   import('@auth').then(res => ({ default: res.Auth }))
 );
 
+const Dashboard = React.lazy(() =>
+  import('@dashboard').then(res => ({ default: res.Dashboard }))
+);
+
+const Profile = React.lazy(() =>
+  import('@profile').then(res => ({ default: res.Profile }))
+);
+
 /**
  * <App />
  */
-const App: FC = () => (
-  <div>
-    <div>
-      <NavLink to='/' activeStyle={{ color: 'green' }}>
-        Home
-      </NavLink>
+const App: FC = withInstaller(
+  new GeneralInstaller(),
 
-      <NavLink to='/auth' activeStyle={{ color: 'green' }}>
-        Auth
-      </NavLink>
-    </div>
+  hoc(useAppProps, ({ user }) => {
+    let content;
 
-    <React.Suspense fallback={null}>
-      <Switch>
-        <Route component={Auth} path='/auth' />
-        <Route render={() => 'Home'} path='/' />
-      </Switch>
-    </React.Suspense>
-  </div>
+    switch (true) {
+      case !user: {
+        content = (
+          <Switch>
+            <Route path='/auth' component={Auth} />
+          </Switch>
+        );
+
+        break;
+      }
+
+      default:
+        content = (
+          <Switch>
+            <Route path='/' component={Dashboard} />
+            <Route path='/profile' component={Profile} />
+          </Switch>
+        );
+
+        break;
+    }
+
+    return <Suspense fallback={null}>{content}</Suspense>;
+  })
 );
 
 export { App };

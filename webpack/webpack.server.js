@@ -1,4 +1,5 @@
 const config = require('./webpack.dev');
+
 const { merge } = require('webpack-merge');
 
 const {
@@ -11,13 +12,21 @@ const {
 module.exports = merge(config, {
   devServer: {
     host,
+
     port,
+
     hot: true,
+
     quiet: true,
+
     inline: true,
+
     publicPath: '/',
+
     contentBase: '../dist',
+
     disableHostCheck: true,
+
     historyApiFallback: true
   }
 });

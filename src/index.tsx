@@ -1,24 +1,56 @@
+import './styles/global/index.scss';
 import 'reflect-metadata';
 import { App } from './app.component';
-import { BrowserRouter, Router } from 'react-router-dom';
 import { ContainerContext } from '@packages/store';
+import { Router } from 'react-router-dom';
+import { Theme, ThemeProvider } from '@packages/theme';
 import { build } from './container';
 import { createBrowserHistory } from 'history';
 import { render } from 'react-dom';
 import React from 'react';
 
 const history = createBrowserHistory();
+
 const container = build(history);
+
+const theme: Theme = {
+  color: {
+    primary: '#FE6B8B',
+    secondary: '#FF8E53',
+    tertiary: '#FF8E53',
+
+    warning: '#FF8E53',
+    error: '#FF8E53',
+    info: '#FF8E53',
+    success: '#FF8E53'
+  },
+
+  space: 12,
+
+  breakpoint: {
+    xxs: 320,
+
+    xs: 375,
+
+    sm: 480,
+
+    md: 769,
+
+    lg: 1024,
+
+    xl: 1200,
+
+    xxl: 1366
+  }
+};
 
 render(
   <ContainerContext.Provider value={container}>
-    <Router history={history}>
-      <App />
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router history={history}>
+        <App />
+      </Router>
+    </ThemeProvider>
   </ContainerContext.Provider>,
   document.getElementById('app')
 );
-
-// <Router history={history}>
-//   <App />
-// </Router>
