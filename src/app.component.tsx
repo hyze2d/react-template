@@ -1,12 +1,14 @@
+import { AppRoutes } from './app.routes';
 import { GeneralInstaller } from './store';
 import { NavLink, Route, Switch } from 'react-router-dom';
+import { Routes } from '@packages/routing';
 import { hoc } from '@packages/utils';
 import { useAppProps } from './app.props';
 import { withInstaller } from '@packages/store';
 import React, { FC, Suspense } from 'react';
 
 const Auth = React.lazy(() =>
-  import('@auth').then(res => ({ default: res.Auth }))
+  import('@auth').then(res => ({ default: res.AuthModule }))
 );
 
 const Dashboard = React.lazy(() =>
@@ -23,33 +25,20 @@ const Profile = React.lazy(() =>
 const App: FC = withInstaller(
   new GeneralInstaller(),
 
-  hoc(useAppProps, ({ user }) => {
-    let content;
-
-    switch (true) {
-      case !user: {
-        content = (
-          <Switch>
-            <Route path='/auth' component={Auth} />
-          </Switch>
-        );
-
-        break;
-      }
-
-      default:
-        content = (
-          <Switch>
-            <Route path='/' component={Dashboard} />
-            <Route path='/profile' component={Profile} />
-          </Switch>
-        );
-
-        break;
-    }
-
-    return <Suspense fallback={null}>{content}</Suspense>;
-  })
+  hoc(useAppProps, ({ user }) => (
+    <Suspense fallback={null}>
+      <Routes
+        map={
+          user
+            ? [
+                ['', Dashboard],
+                [AppRoutes.Profile, Profile]
+              ]
+            : [[AppRoutes.Auth, Auth]]
+        }
+      />
+    </Suspense>
+  ))
 );
 
 export { App };

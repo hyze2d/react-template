@@ -74,9 +74,9 @@ const resolve = {
   alias: {
     '@img': '../src/public/img',
 
-    'core.scss': '../src/styles/core/index.scss',
+    'core.scss': '/src/styles/core/index.scss',
 
-    'common.scss': '../src/styles/common/index.scss'
+    'common.scss': '/src/styles/common/index.scss'
   }
 };
 

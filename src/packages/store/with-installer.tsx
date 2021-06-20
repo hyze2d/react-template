@@ -5,7 +5,7 @@ import React from 'react';
 
 const installers: Installer[] = [];
 
-function withInstaller<C extends ComponentType>(
+function withInstaller<C extends ComponentType<any>>(
   installer: Installer,
   Component: C,
   Preloader?: ComponentType
