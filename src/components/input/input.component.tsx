@@ -1,18 +1,26 @@
-import * as styles from './input.scss';
 import { InputProps } from './input.props';
 import React, { FC } from 'react';
 import classNames from 'classnames';
+import styles from './input.scss';
 
 /**
  * <Input />
  */
-const Input: FC<InputProps> = ({ value, onChange, error, hasError, label }) => (
-  <div className={classNames(styles.input)}>
+const Input: FC<InputProps> = ({
+  type,
+  value,
+  error,
+  label,
+  hasError,
+  onChange,
+  className
+}) => (
+  <div className={classNames(styles.container, className)}>
     {label && <label className={styles.label}>{label}</label>}
 
     <input
       className={classNames(styles.input)}
-      type='text'
+      type={type}
       value={value}
       onChange={event => {
         onChange(event.target.value);
@@ -22,5 +30,9 @@ const Input: FC<InputProps> = ({ value, onChange, error, hasError, label }) => (
     {hasError && <div className={styles.error}>{error}</div>}
   </div>
 );
+
+Input.defaultProps = {
+  type: 'text'
+};
 
 export { Input };

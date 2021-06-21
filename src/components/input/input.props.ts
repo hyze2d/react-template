@@ -1,6 +1,8 @@
 import { ControlProps } from '@packages/form';
 
-type InputProps = ControlProps<string> & {};
+type InputProps = ControlProps<string> & {
+  type?: string;
+};
 
 /**
  * <Input /> props

@@ -1,4 +1,33 @@
 @import 'core.scss';
+@import 'common.scss';
+
+.container {
+  width: 100%;
+}
+
+.label {
+  @extend .body-2;
+
+  display: block;
+
+  width: 100%;
+
+  margin-bottom: calc(#{$space} / 2);
+}
 
 .input {
+  @extend .body-1;
+
+  width: 100%;
+  height: $control-height;
+  padding: 0 $space;
+
+  border: 1px solid $secondary;
+  border-radius: $border-radius;
+
+  outline: none;
+
+  &:focus {
+    border-color: $primary;
+  }
 }

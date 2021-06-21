@@ -1,8 +1,31 @@
-type SignInProps = {};
+import { Credentials } from '@auth/models';
+import { useAuthStore } from '@auth/hooks';
+import { useFormik } from 'formik';
+
+const initialValues = {
+  email: '',
+  password: ''
+};
 
 /**
  * <SignIn /> props
  */
-const useSignInProps = (_: SignInProps) => {};
+const useSignInProps = () => {
+  const { store } = useAuthStore();
 
-export { SignInProps, useSignInProps };
+  const form = useFormik<Credentials>({
+    initialValues,
+
+    onSubmit: (values, { setSubmitting }) => {
+      store.login(values);
+
+      setSubmitting(false);
+    }
+  });
+
+  return {
+    form
+  };
+};
+
+export { useSignInProps };

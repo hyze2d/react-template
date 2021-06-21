@@ -1,3 +1,15 @@
+.regular-text {
+  font-weight: 400;
+}
+
+.medium-text {
+  font-weight: 500;
+}
+
+.bold-text {
+  font-weight: 700;
+}
+
 .h1 {
   @include font(28px, 700, 36px);
 }
@@ -27,9 +39,9 @@
 }
 
 .body-2 {
-  @include font(16px, 400);
+  @include font(14px, 400);
 }
 
 .body-3 {
-  @include media('<md', '<xl');
+  @include font(12px, 400);
 }

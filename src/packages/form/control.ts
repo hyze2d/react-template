@@ -29,9 +29,13 @@ type ControlProps<V = string> = {
    */
   touched?: boolean;
   /**
-   * Is has error
+   * has error
    */
   hasError?: boolean;
+  /**
+   * Control class name
+   */
+  className?: string;
   /**
    * Placeholder
    */

@@ -2,16 +2,26 @@ import { Container } from 'inversify';
 import { makeAutoObservable } from 'mobx';
 
 abstract class Installer {
-  public static install(container: Container, State, Store) {
-    container.bind(State).toSelf().inSingletonScope();
-    container.bind(Store).toSelf().inSingletonScope();
+  public static install(container: Container, State, Store, Subscriber?) {
+    const deps = [State, Store, Subscriber].filter(item => item);
 
-    [container.get<object>(State), container.get<object>(Store)].map(dep =>
-      makeAutoObservable(dep)
-    );
+    deps.forEach(item => {
+      container.bind(item).toSelf().inSingletonScope();
+    });
+
+    const [state, store] = [container.get(State), container.get(Store)];
+
+    [state, store].map(dep => makeAutoObservable(dep as object));
+
+    // initialized after bc makeAutoObservable should wrap store/state first
+    if (!Subscriber) return;
+
+    container.get(Subscriber);
   }
 
   public id?: string;
+
+  public children?: Installer[] = [];
 
   /**
    * Install module

@@ -1,19 +1,7 @@
+import { Credentials } from './models';
 import { useAuthStore } from './hooks';
+import { useFormik } from 'formik';
 
-const useAuthProps = () => {
-  const {
-    store,
-    state: { email }
-  } = useAuthStore();
-
-  const onClick = () => {
-    store.setEmail('KEKW@KEKW.KEKW');
-  };
-
-  return {
-    email,
-    onClick
-  };
-};
+const useAuthProps = () => {};
 
 export { useAuthProps };

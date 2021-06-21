@@ -101,7 +101,7 @@ function withField<P extends Props>(source: ComponentType<P>) {
     );
   };
 
-  return result as any as ComponentType<
+  return (result as any) as ComponentType<
     {
       name: string;
       hooks?: {

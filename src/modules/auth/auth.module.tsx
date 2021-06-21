@@ -1,10 +1,9 @@
 import { AuthInstaller } from './store';
 import { AuthRoute } from './auth.routes';
 import { Recovery, SetPassword, SignIn, SignUp } from './routes';
-import { Route, RouteChildrenProps, Switch } from 'react-router-dom';
 import { Routes } from '@packages/routing';
 import { withInstaller } from '@packages/store';
-import React, { ComponentType } from 'react';
+import React from 'react';
 
 const installer = new AuthInstaller();
 

@@ -1,19 +1,29 @@
 import { AuthState } from './state';
-import { GeneralState } from '@store';
+import { Credentials } from '../models';
+import { Dispatcher } from '@packages/store';
+import { GetUser } from '@store/commands';
 import { injectable } from 'inversify';
-import { runInAction } from 'mobx';
+import { sleep } from '@packages/utils';
 
 @injectable()
 class AuthStore {
   public constructor(
     private state: AuthState,
-    private generalState: GeneralState
+    private dispatcher: Dispatcher
   ) {}
 
-  public setEmail(email: string) {
-    this.state.email = email;
+  public *login(credentials: Credentials) {
+    console.log('login start');
 
-    console.log(this.generalState.user, '<<< USER');
+    yield sleep(1000);
+
+    console.log('login sleep end');
+
+    this.state.credentials = credentials;
+
+    yield this.dispatcher.dispatch(new GetUser(), { shouldWait: true });
+
+    console.log('login end');
   }
 }
 

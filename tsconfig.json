@@ -18,9 +18,11 @@
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["node_modules/@types"],
     "paths": {
+      "@components": ["./src/components/index"],
       "@models": ["./src/models/index"],
       "@models/*": ["./src/models/*"],
       "@store": ["./src/store/index"],
+      "@store/*": ["./src/store/*"],
       "@packages/*": ["./src/packages/*"],
       "@hooks": ["./src/hooks/index"],
       "@profile": ["./src/modules/profile/index"],

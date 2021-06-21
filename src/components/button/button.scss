@@ -1,4 +1,18 @@
 @import 'core.scss';
 
 .button {
+  @include flex(center);
+
+  height: $control-height;
+
+  padding: 0 $space;
+
+  color: #fff;
+
+  background: $primary;
+
+  border: 1px solid $primary;
+  border-radius: $border-radius;
+
+  cursor: pointer;
 }

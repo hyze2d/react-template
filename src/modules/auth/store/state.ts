@@ -1,9 +1,9 @@
+import { Credentials } from '../models';
 import { injectable } from 'inversify';
 
 @injectable()
 class AuthState {
-  public email: string = '';
-  public password: string = '';
+  public credentials = new Credentials();
 }
 
 export { AuthState };
