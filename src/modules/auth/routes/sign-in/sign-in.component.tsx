@@ -1,5 +1,8 @@
+import { AppRoutes } from 'src/app.routes';
+import { AuthRoute } from '@auth/auth.routes';
 import { Button, Field } from '@components';
 import { Form } from '@packages/form';
+import { Link } from 'react-router-dom';
 import { hoc } from '@packages/utils';
 import { useSignInProps } from './sign-in.props';
 import React, { FC, FormEvent } from 'react';
@@ -17,12 +20,21 @@ const SignIn = hoc(useSignInProps, ({ form }) => (
       className={styles.field}
       name='password'
       type='password'
-      label='Email'
+      label='Password'
     />
 
     <Button className={styles.submit} type='submit'>
       Sign In
     </Button>
+
+    <div>
+      <Link
+        className={styles.register}
+        to={`/${AppRoutes.Auth}/${AuthRoute.SignUp}`}
+      >
+        Don't have an account?
+      </Link>
+    </div>
   </Form>
 ));
 

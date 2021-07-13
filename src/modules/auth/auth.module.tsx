@@ -5,9 +5,7 @@ import { Routes } from '@packages/routing';
 import { withInstaller } from '@packages/store';
 import React from 'react';
 
-const installer = new AuthInstaller();
-
-const AuthModule = withInstaller(installer, () => (
+const AuthModule = withInstaller(new AuthInstaller(), () => (
   <Routes
     map={[
       [AuthRoute.SignIn, SignIn],

@@ -1,9 +1,32 @@
 import { ComponentType, useEffect, useState } from 'react';
+import { Container } from 'inversify';
 import { Installer } from './installer';
 import { useContainer } from './context';
 import React from 'react';
 
 const installers: Installer[] = [];
+
+const install = async (installer: Installer, container: Container) => {
+  await Promise.all(
+    installer.children.map(item => {
+      install(item, container);
+    })
+  );
+
+  await installer.install(container);
+};
+
+const getAll = (installer: Installer, result: Installer[] = []) => {
+  if (installer?.children?.length != 0) {
+    installer.children.forEach(item => {
+      getAll(item, result);
+    });
+  }
+
+  result.push(installer);
+
+  return result;
+};
 
 function withInstaller<C extends ComponentType<any>>(
   installer: Installer,
@@ -20,9 +43,9 @@ function withInstaller<C extends ComponentType<any>>(
       if (installed) return;
 
       Promise.resolve()
-        .then(() => installer.install(container))
+        .then(() => install(installer, container))
         .then(() => {
-          installers.push(installer);
+          installers.push(...getAll(installer));
 
           setInstalled(true);
         })

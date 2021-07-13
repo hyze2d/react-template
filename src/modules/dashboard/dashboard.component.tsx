@@ -1,4 +1,6 @@
+import { Button, Input } from '@components';
 import { DashboardProps } from './dashboard.props';
+import { Link } from 'react-router-dom';
 import React, { FC } from 'react';
 import classNames from 'classnames';
 import styles from './dashboard.scss';
@@ -8,10 +10,9 @@ import styles from './dashboard.scss';
  */
 const Dashboard: FC<DashboardProps> = () => (
   <div className={styles.dashboard}>
-    {/* content */}
-    {/* content */}
-    {/* content */}
-    Dashboard
+    <Input onChange={() => {}} value='dsa' />
+    <Link to='/auth/sign-in'>kkek</Link>
+    <Button>Dashboard</Button>
   </div>
 );
 

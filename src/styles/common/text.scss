@@ -1,47 +1,47 @@
-.regular-text {
+%regular-text {
   font-weight: 400;
 }
 
-.medium-text {
+%medium-text {
   font-weight: 500;
 }
 
-.bold-text {
+%bold-text {
   font-weight: 700;
 }
 
-.h1 {
+%h1 {
   @include font(28px, 700, 36px);
 }
 
-.h2 {
+%h2 {
   @include font(24px, 700, 36px);
 }
 
-.h3 {
+%h3 {
   @include font(22px, 700, 32px);
 }
 
-.h4 {
+%h4 {
   @include font(18px, 700, 28px);
 }
 
-.h5 {
+%h5 {
   @include font(16px, 700, 24px);
 }
 
-.h6 {
+%h6 {
   @include font(14px, 700, 20px);
 }
 
-.body-1 {
+%body-1 {
   @include font(16px, 400);
 }
 
-.body-2 {
+%body-2 {
   @include font(14px, 400);
 }
 
-.body-3 {
+%body-3 {
   @include font(12px, 400);
 }

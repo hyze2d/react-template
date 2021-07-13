@@ -6,7 +6,7 @@
 }
 
 .label {
-  @extend .body-2;
+  @extend %body-2;
 
   display: block;
 
@@ -16,7 +16,7 @@
 }
 
 .input {
-  @extend .body-1;
+  @extend %body-1;
 
   width: 100%;
   height: $control-height;

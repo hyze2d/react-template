@@ -19,18 +19,25 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@components": ["./src/components/index"],
+      "@components/*": ["./src/components/*"],
       "@models": ["./src/models/index"],
       "@models/*": ["./src/models/*"],
       "@store": ["./src/store/index"],
       "@store/*": ["./src/store/*"],
       "@packages/*": ["./src/packages/*"],
       "@hooks": ["./src/hooks/index"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@services": ["./src/services/index"],
+      "@services/*": ["./src/services/*"],
+      "@config": ["./src/config/index"],
       "@profile": ["./src/modules/profile/index"],
       "@profile/*": ["./src/modules/profile/*"],
       "@auth": ["./src/modules/auth/index"],
       "@auth/*": ["./src/modules/auth/*"],
       "@dashboard": ["./src/modules/dashboard/index"],
-      "@dashboard/*": ["./src/modules/dashboard/*"]
+      "@dashboard/*": ["./src/modules/dashboard/*"],
+      "@auth/registration": ["./src/modules/auth/modules/registration/index"],
+      "@auth/registration/*": ["./src/modules/auth/modules/registration/*"]
     }
   }
 }

@@ -1,5 +1,19 @@
 @import 'core.scss';
 
 .sign-up {
-  color: red;
+  @include flex(center, center, column);
+
+  flex: 1;
+
+  height: 100vh;
+
+  padding: $space;
+}
+
+.field {
+  margin-bottom: $space;
+}
+
+.submit {
+  width: 100%;
 }

@@ -31,10 +31,13 @@ const App: FC = withInstaller(
         map={
           user
             ? [
-                ['', Dashboard],
-                [AppRoutes.Profile, Profile]
+                [AppRoutes.Profile, Profile],
+                ['', Dashboard]
               ]
-            : [[AppRoutes.Auth, Auth]]
+            : [
+                [AppRoutes.Auth, Auth],
+                ['', Dashboard]
+              ]
         }
       />
     </Suspense>

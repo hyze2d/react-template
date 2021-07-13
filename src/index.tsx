@@ -1,7 +1,9 @@
 import './styles/global/index.scss';
 import 'reflect-metadata';
 import { App } from './app.component';
+import { AuthInstaller, AuthState } from '@auth/store';
 import { ContainerContext } from '@packages/store';
+import { RegistrationState } from '@auth/modules/registration/store';
 import { Router } from 'react-router-dom';
 import { Theme, ThemeProvider } from '@packages/theme';
 import { build } from './container';

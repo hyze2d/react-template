@@ -19,6 +19,7 @@ module.exports = merge(config, {
 
   optimization: {
     splitChunks: {
+      chunks: 'all',
       cacheGroups: {
         vendor: {
           chunks: 'all',
@@ -26,6 +27,12 @@ module.exports = merge(config, {
           name: 'vendor',
 
           test: /[\\/]node_modules[\\/]/
+        },
+
+        styles: {
+          test: /\.(css|scss|less)$/,
+
+          enforce: true
         }
       }
     },
@@ -45,15 +52,15 @@ module.exports = merge(config, {
      */
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['./dist']
-    }),
+    })
 
     /**
      * Make bundle report
      */
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'static',
 
-      reportFilename: '../report/report.html'
-    })
+    //   reportFilename: '../report/report.html'
+    // })
   ]
 });

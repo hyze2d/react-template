@@ -232,5 +232,6 @@ const config = {
 
 module.exports = {
   config,
+  production,
   enviroments
 };
